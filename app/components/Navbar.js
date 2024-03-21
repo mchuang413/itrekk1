@@ -22,9 +22,9 @@ const Navbar = () => {
             <li>
               <Link href="/Demo">Demo</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/About">About</Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/PrivacyPolicy">Privacy Policy</Link>
             </li>
