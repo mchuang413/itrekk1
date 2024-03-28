@@ -18,7 +18,7 @@ const HomePage = () => {
           muted
           className="absolute w-full h-full object-cover"
         >
-          <source src="/assets/adventureVideo.mp4" type="video/mp4" />
+          <source src="/assets/AdventureVideo.mp4" type="video/mp4" />
         </video>
 
         {/* Dark overlay for better text visibility */}
