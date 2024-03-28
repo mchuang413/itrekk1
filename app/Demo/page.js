@@ -1,37 +1,49 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 
+const images = [
+  "/assets/img1.png",
+  "/assets/img2.png",
+  "/assets/3.png",
+  "/assets/4.png",
+  "/assets/5.png",
+];
+
 const Page = () => {
+  const [selectedImg, setSelectedImg] = useState(null);
+
   return (
     <>
-      <Navbar></Navbar>
-      <div className="relative h-screen w-screen overflow-hidden mt-10">
-        {/* Background video */}
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-        >
-          <source src="/assets/bkgrd.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <Navbar />
 
-        {/* Centered content */}
-        <div className="flex justify-center items-center h-full">
-          {/* Promo video with rounded corners and sound */}
-          <video
-            autoPlay
-            loop
-            className="z-10 rounded-lg"
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
-          >
-            <source src="/assets/promo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+      {/* Container for game images with padding-top to push it below the navbar */}
+      <div className="pt-16 py-4 flex flex-wrap justify-center items-center bg-gray-100">
+        {/* Images with adjusted paths for consistency and click handler */}
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Image ${index + 1}`}
+            className="m-2 w-48 md:w-64 lg:w-96 hover:scale-105 transition-transform duration-200 ease-in-out object-cover cursor-pointer"
+            onClick={() => setSelectedImg(img)}
+          />
+        ))}
       </div>
+      {/* Modal for displaying the clicked image */}
+      {selectedImg && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+          onClick={() => setSelectedImg(null)}
+        >
+          <img
+            src={selectedImg}
+            alt="Selected"
+            className="max-w-full max-h-full p-4"
+            onClick={(e) => e.stopPropagation()} // Prevents click inside the modal from closing it
+          />
+        </div>
+      )}
     </>
   );
 };
