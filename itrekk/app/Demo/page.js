@@ -3,33 +3,18 @@ import React from "react";
 import Navbar from "../components/Navbar";
 
 const Page = () => {
+  // Array of image names
+  const imageNames = ['1', '2', '3', '4', '5'];
+
   return (
     <>
-      <Navbar></Navbar>
-      <div className="relative h-screen w-screen overflow-hidden mt-10">
-        {/* Background video */}
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-        >
-          <source src="/assets/bkgrd.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        {/* Centered content */}
-        <div className="flex justify-center items-center h-full">
-          {/* Promo video with rounded corners and sound */}
-          <video
-            autoPlay
-            loop
-            className="z-10 rounded-lg"
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
-          >
-            <source src="/assets/promo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+      <Navbar />
+      <div className="flex justify-center items-center h-screen">
+        <div className="rounded-lg shadow-xl bg-base-100 max-h-[80vh] w-11/12 md:w-3/4 lg:w-2/3 overflow-auto p-8">
+          {/* Map through the imageNames array to display images */}
+          {imageNames.map((imageName, index) => (
+            <img src="/assets/${imageName}.png" className="h-8  mb-2 mr-1" />
+          ))}
         </div>
       </div>
     </>
