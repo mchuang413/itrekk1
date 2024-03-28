@@ -30,7 +30,6 @@ const Page = () => {
           />
         ))}
       </div>
-
       {/* Modal for displaying the clicked image */}
       {selectedImg && (
         <div
